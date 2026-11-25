@@ -473,10 +473,11 @@ def _setup_wins(stdscr: curses.window, conf: Config, wins: Windows) -> None:
         try:
             wins.base_win = curses.newwin(conf.base_height, conf.base_width,
                                           conf.base_origin_y, conf.base_origin_x)
-            curses.panel.new_panel(wins.base_win)
             _draw_base(wins.base_win, conf.base_type)
+            wins.base_win.overlay(stdscr)
         except curses.error:
             wins.base_win = None
+    stdscr.noutrefresh()
 
     wins.tree_win = curses.newwin(conf.base_origin_y, cols, 0, 0)
     wins.tree_win.nodelay(True)
@@ -663,5 +664,4 @@ def run(stdscr: curses.window, conf: Config) -> str | None:
                 continue
             if key != -1:
                 break
-
     return printed_output
