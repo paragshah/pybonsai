@@ -1,0 +1,20 @@
+[build-system]
+requires = ["setuptools>=68.0"]
+build-backend = "setuptools.backends._legacy:_Backend"
+
+[project]
+name = "pybonsai"
+version = "1.0.0"
+description = "A beautifully random bonsai tree generator for the terminal"
+readme = "README.md"
+requires-python = ">=3.10"
+license = "GPL-3.0-only"
+keywords = ["bonsai", "terminal", "curses", "ascii-art"]
+classifiers = [
+    "Environment :: Console :: Curses",
+    "Programming Language :: Python :: 3",
+    "Topic :: Games/Entertainment",
+]
+
+[project.scripts]
+pybonsai = "pybonsai.__main__:main"
